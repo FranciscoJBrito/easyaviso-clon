@@ -1,4 +1,5 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
+const colors = require('tailwindcss/colors')
 
 module.exports = {
   content: [
@@ -8,6 +9,11 @@ module.exports = {
     "./app/views/**/*.{erb,haml,html,slim}",
   ],
   theme: {
+    colors: {
+      ...colors,
+      "eb-pink": "#f42d7e",
+
+    },
     extend: {
       fontFamily: {
         sans: ["Inter var", ...defaultTheme.fontFamily.sans],
