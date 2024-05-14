@@ -1,16 +1,23 @@
 <section class="flex flex-col items-center h-auto">
+  <!-- Hero -->
   <div class="w-full h-[46vh] bg-[url('/house-bg.png')] bg-center bg-cover">
     <div class="flex flex-col items-center justify-center">
-      <div class="max-w-[1240px] w-full h-20 flex justify-between items-center px-6">
-        <img src="/logo-ea.svg" alt="logo" class="brightness-[10] w-32"/>
-      </div>
-      <header class="min-h-[35vh] h-auto flex flex-col justify-center mt-[-1.5rem] gap-7 items-center w-full text-center">
+      <nav class="max-w-[1240px] w-full h-20 flex justify-between items-center px-6">
+        <%= image_tag('logo-ea.svg', :class => "brightness-[10] w-32", :alt => "logo") %>
+        <%= render "shared/menu" %>
+      </nav>
+      <div class="min-h-[35vh] h-auto flex flex-col justify-center mt-[-1.5rem] gap-7 items-center w-full text-center">
         <h1 class="text-5xl font-bold text-white">La manera fácil de encontrar tu casa</h1>
         <%= render 'shared/search' %>
-      </header>
+      </div>
     </div>
   </div>
+  <!-- Tableros o banner -->
   <section class="flex items-center justify-start max-w-[1240px] w-full py-16 px-6 bg-white">
-    <%= render "home/partials/banner" %>
+    <% if current_user %>
+      Hola, <%= current_user.email %>
+    <% else %>
+      <%= render "home/partials/banner" %>
+    <% end %>
   </section>
 </section>
