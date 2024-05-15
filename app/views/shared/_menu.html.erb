@@ -7,10 +7,20 @@
     <%= image_tag 'icons/menu.svg', alt: "menu", width: 20, height: 20 %>
   </div>
   <!-- Items -->
-  <div class="flex flex-col items-start justify-center min-w-[13.5rem] bg-white rounded-xl border-[1px] border-gray-200 p-2 absolute top-[4.5rem] invisible" data-menu-target="items">
-    <%= link_to 'Iniciar sesión', new_user_session_path, :class => "p-3 font-light w-full" %>
-    <%= link_to 'Crear cuenta', new_user_registration_path, :class => "p-3 font-light w-full" %>
-    <hr class="w-full text-gray-200">
-    <a class="p-3 font-light w-full" href="/mx/publicar">Publicar</a>
-  </div>
+  <% if current_user %>
+    <div class="flex flex-col items-start justify-center min-w-[13.5rem] bg-white rounded-xl border-[1px] border-gray-200 p-2 absolute top-[4.5rem] invisible" data-menu-target="items">
+      <hr class="w-full text-gray-200">
+      <%= link_to 'Ver tableros', new_user_session_path, :class => "p-3 font-light w-full" %>
+      <hr class="w-full text-gray-200">
+      <%= link_to 'Publicar', new_user_registration_path, :class => "p-3 font-light w-full" %>
+      <%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete, data: { turbo_method: :delete } ,:class => "p-3 font-light w-full" %>
+    </div>
+  <%else%>
+    <div class="flex flex-col items-start justify-center min-w-[13.5rem] bg-white rounded-xl border-[1px] border-gray-200 p-2 absolute top-[4.5rem] invisible" data-menu-target="items">
+      <%= link_to 'Iniciar sesión', new_user_session_path, :class => "p-3 font-light w-full" %>
+      <%= link_to 'Crear cuenta', new_user_registration_path, :class => "p-3 font-light w-full" %>
+      <hr class="w-full text-gray-200">
+      <a class="p-3 font-light w-full" href="/mx/publicar">Publicar</a>
+    </div>
+  <% end %>
 </div>

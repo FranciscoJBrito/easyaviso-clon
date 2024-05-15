@@ -12,6 +12,7 @@ module.exports = {
     colors: {
       ...colors,
       "eb-pink": "#f42d7e",
+      "eb-gray": "#f6f9fc",
 
     },
     extend: {
